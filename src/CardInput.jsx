@@ -7,10 +7,10 @@ const CardInput = () => {
   const NAME = 'name'
   const TEXT = 'text'
   
+  const COST = 'cost'
   const REWARD = 'reward'
   const LIFE = 'life'
   const TYPE = 'type'
-  const COST = 'cost'
   const CONTROL = 'control'
 
   const [selectValue, setSelectValue] = React.useState("")
@@ -37,6 +37,7 @@ const CardInput = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('handleSubmit')
+    //needs to be different depending on which type of card it is (path, object have all feilds of that card)
     writeToDatabase('villains', { name: nameValue })
   }
 
@@ -57,7 +58,7 @@ const CardInput = () => {
     Store: [TYPE, COST],
     Villain: [REWARD, LIFE],
     Location: [CONTROL],
-    DarkArts: [],
+    'Dark Arts': [],
   }
 
   const handleNameChange = (name) => {
@@ -68,6 +69,18 @@ const CardInput = () => {
   }
   const handleCostChange = (name) => {
     setCostValue(name.target.value)
+  }
+  const handleRewardChange = (name) => {
+    setRewardValue(name.target.value)
+  }
+  const handleLifeChange = (name) => {
+    setLifeValue(name.target.value)
+  }
+  const handleTypeChange = (name) => {
+    setTypeValue(name.value)
+  }
+  const handleControlChange = (name) => {
+    setControlValue(name.target.value)
   }
   return (<div>
     <Select options={options} onChange={onChange} />
@@ -83,7 +96,31 @@ const CardInput = () => {
       { selectValue.label && showOptions[selectValue.label].includes(COST) ? 
           <label> 
             Cost:  
-            <input type='text' value={nameValue} onChange={handleCostChange} />
+            <input type='text' value={costValue} onChange={handleCostChange} />
+          </label>
+        : '' }
+        { selectValue.label && showOptions[selectValue.label].includes(REWARD) ? 
+          <label> 
+            Reward:  
+            <input type='text' value={rewardValue} onChange={handleRewardChange} />
+          </label>
+        : '' }
+        { selectValue.label && showOptions[selectValue.label].includes(LIFE) ? 
+          <label> 
+            Life:  
+            <input type='text' value={lifeValue} onChange={handleLifeChange} />
+          </label>
+        : '' }
+        { selectValue.label && showOptions[selectValue.label].includes(TYPE) ? 
+          <label> 
+            Type:  
+            <Select options={typeOptions} onChange={handleTypeChange} />
+          </label>
+        : '' }
+        { selectValue.label && showOptions[selectValue.label].includes(CONTROL) ? 
+          <label> 
+            Control:  
+            <input type='text' value={controlValue} onChange={handleControlChange} />
           </label>
         : '' }
       <input type='submit' value="Submit"/>
