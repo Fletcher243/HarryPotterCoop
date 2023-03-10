@@ -7,13 +7,20 @@ const handleClick = () =>{
 
 class Lobby extends React.Component {
   render() {
-    const mySpan = <span>This is a span</span>
+    const characterPrompt = <div>Choose a Character: {"\t"}
+      <select>
+          <option value="harry">Harry Potter</option>
+          <option value="hermione">Hermione</option>
+          <option value="ron">Ron</option>
+          <option value="neville">Neville</option>
+          
+      </select> </div>
     return (<div>
-      <h1>This is a Lobby</h1>
-      {mySpan}
+      Harry Potter Boardgame Lobby
+      {characterPrompt}
       <button type="button" onClick= {handleClick}>START GAME</button>
-    </div>);
-  }
+        </div>);
+    }
 }
 
 export default Lobby
