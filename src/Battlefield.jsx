@@ -2,7 +2,8 @@ import React from 'react';
 
 class Battlefield extends React.Component {
   render() {
-    return (<div>
+    return (<div className='battlefield'>
+
       This is the Battlefield
     </div>);
   }
