@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 //open page
 
 const handleClick = () =>{
   console.log("GAME STARTED")
+
 }
 
 class Lobby extends React.Component {
@@ -18,7 +20,7 @@ class Lobby extends React.Component {
     return (<div>
       Harry Potter Boardgame Lobby
       {characterPrompt}
-      <button type="button" onClick= {handleClick}>START GAME</button>
+      <Link to='/battlefield'>START GAME</Link>
         </div>);
     }
 }
